@@ -29,6 +29,10 @@ class TimeTablesController < ApplicationController
 
     respond_to do |format|
       if @time_table.save
+        Subject.where(compulsory: true).each do |subject|
+          @time_table.timetable_subjects.create(subject_id: subject.id)
+        end
+        
         format.html { redirect_to @time_table, notice: 'Time table was successfully created.' }
         format.json { render :show, status: :created, location: @time_table }
       else

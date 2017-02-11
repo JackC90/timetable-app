@@ -18,10 +18,12 @@
         <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
         <td style="display:none"><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
-        <% if selected%>
+        <% if selected && subject.compulsory == false %>
           <td><%= link_to('Remove Subject', time_table_timetable_subject_path(@time_table.id, subject.timetable_subjects.find_by(time_table_id: @time_table.id).id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default") %></td>
-        <% else %>
+        <% elsif selected == false %>
           <td><%= render "timetable_subjects/new", subject: subject %></td>  
+        <% else %>
+          <td></td>
         <% end %>
       </tr>
       <% @slots = subject.slots.all %>

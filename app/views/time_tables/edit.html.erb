@@ -1,7 +1,9 @@
 <div class="container">
 	<h1>Choose Subjects for Your Time Table</h1>
 
-	<%= render "time_tables/form", time_table: @time_table %>
+	<div id="time-table-form">
+		<%= render "time_tables/form", time_table: @time_table %>
+	</div>
 
 	<%= render partial:"time_tables/table" %>
 
@@ -18,3 +20,4 @@
 	<%= link_to 'Show', @time_table %> |
 	<%= link_to 'Back', time_tables_path %>
 </div>
+

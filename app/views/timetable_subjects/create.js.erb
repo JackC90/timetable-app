@@ -1,11 +1,15 @@
 $("#selected-subjects").html(
-	"<h1>Selected Subjects</h1><%= escape_javascript(render "subjects/index", subjects: @selected_subjects, selected: true) %>"
+	"<h1>Selected Subjects</h1><%= escape_javascript(render "subjects/index", subjects: @selected_subjects, selected: true %>)"
 )
 
 $("#subjects-list").html(
-	"<h1>Subjects List</h1><%= escape_javascript(render "subjects/index", subjects: @subjects, selected: false) %>"
+	"<h1>Subjects List</h1><%= escape_javascript(render "subjects/index", subjects: @subjects, selected: false %>)"
 )
 
 $("#table-div").html(
-	"escape_javascript(<%= render partial:"time_tables/table") %>"
+	"escape_javascript(<%= render partial:"time_tables/table" %>)"
+)
+
+$("#time-table-form").html(
+	"escape_javascript(<%= render "time_tables/form", time_table: @time_table %>)"
 )

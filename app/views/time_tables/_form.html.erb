@@ -17,10 +17,16 @@
   </div>
 
   <% if !time_table.total_credits.nil? && time_table.total_credits >= 15 %>
-  <%= f.hidden_field :complete, value: true %>
-  <% end %>
-
-  <div class="actions">
+  <%=   f.hidden_field :complete, value: true %>
+  <div class="actions" id="complete">
+    <%= f.submit "Complete! You have enough credits!", class: "btn btn-success" %>
+  </div>
+  <% else %>
+  <div class="actions" id="incomplete">
     <%= f.submit %>
   </div>
+  <% end %>
+
+  
 <% end %>
+
