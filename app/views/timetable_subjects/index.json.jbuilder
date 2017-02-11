@@ -1,0 +1,1 @@
+json.array! @timetable_subjects, partial: 'timetable_subjects/timetable_subject', as: :timetable_subject

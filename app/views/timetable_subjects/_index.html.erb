@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Timetable Subjects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time table</th>
+      <th>Subject</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @timetable_subjects.each do |timetable_subject| %>
+      <tr>
+        <td><%= timetable_subject.time_table %></td>
+        <td><%= timetable_subject.subject %></td>
+        <td><%= link_to 'Show', timetable_subject %></td>
+        <td><%= link_to 'Edit', edit_timetable_subject_path(timetable_subject) %></td>
+        <td><%= link_to 'Destroy', timetable_subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Timetable Subject', new_timetable_subject_path %>

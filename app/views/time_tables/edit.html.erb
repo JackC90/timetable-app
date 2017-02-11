@@ -1,0 +1,20 @@
+<div class="container">
+	<h1>Choose Subjects for Your Time Table</h1>
+
+	<%= render "time_tables/form", time_table: @time_table %>
+
+	<%= render partial:"time_tables/table" %>
+
+	<div class="container col-md-6">
+		<h1>Selected Subjects</h1>
+		<%= render "subjects/index", subjects: @selected_subjects %>
+	</div>
+
+	<div class="container col-md-6">
+		<h1>Available Subjects</h1>
+		<%= render "subjects/index", subjects: @subjects %>
+	</div>
+
+	<%= link_to 'Show', @time_table %> |
+	<%= link_to 'Back', time_tables_path %>
+</div>

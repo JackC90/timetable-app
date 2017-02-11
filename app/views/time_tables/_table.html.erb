@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<table class="table-bordered" id="table">
+	<% generate_times %>
+	<% generate_days %>
+	<tr>
+		<th>Day/Time</th>
+		<% @times.each do |time| %>
+		<th><%= time %></th>
+		<% end %>
+	</tr>
+
+	<% @days.each do |day| %>
+	<tr>
+		<th><%= day %></th>
+		<% @times.count.times do %>
+		<td></td>
+		<% end %>
+	</tr>
+	<% end %>
+</table>
+

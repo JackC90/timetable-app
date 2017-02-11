@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Time table:</strong>
+  <%= @timetable_subject.time_table %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @timetable_subject.subject %>
+</p>
+
+<%= link_to 'Edit', edit_timetable_subject_path(@timetable_subject) %> |
+<%= link_to 'Back', timetable_subjects_path %>

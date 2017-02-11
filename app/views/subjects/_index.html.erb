@@ -1,0 +1,32 @@
+<table class="table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Credits</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <p><%= "No subjects in this list." if subjects.nil? %></p>
+
+  <tbody>
+    <% subjects.each do |subject| %>
+      <tr>
+        <td><h5><b><%= subject.name %></b></h5></td>
+        <td><%= subject.credits %></td>
+        <td><%= link_to 'Show', subject %></td>
+        <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
+        <td style="display:none"><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= render "timetable_subjects/new", subject: subject %></td> 
+      </tr>
+      <% @slots = subject.slots.all %>
+      <tr>
+        <td colspan="5"><%= render partial:"slots/index" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Subject', new_subject_path %>

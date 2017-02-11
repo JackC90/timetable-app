@@ -1,0 +1,9 @@
+<%= form_for(:timetable_subject, url: url) do |f| %>
+  <div class="field" style="display:none">
+    <%= f.hidden_field :subject_id, value: subject.id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add Subject" %>
+  </div>
+<% end %>
