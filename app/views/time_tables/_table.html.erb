@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 <table class="table-bordered" id="table">
-	<% generate_times %>
 	<% generate_days %>
+	<% @times = time_line %>
 	<tr>
 		<th>Day/Time</th>
 		<% @times.each do |time| %>
-		<th><%= time %></th>
+		<th><%= format_time(time) %></th>
 		<% end %>
 	</tr>
 
@@ -19,3 +19,39 @@
 	<% end %>
 </table>
 
+<script>
+array = <%= @array = raw time_array(@time_table.id) %>
+length = array.length
+array = array.map(function(x) {
+	return [x[0], Date.parse(x[1]), Date.parse(x[2])];
+});
+
+times = <%= raw @times.map {|time| time.to_s } %>
+times = times.map(function(x) {
+	return Date.parse(x);
+});
+
+days = <%= raw @days %>
+
+table = document.getElementById("table");
+
+for (var i = 1, row; row = table.rows[i]; i++) {
+   for (var j = 1, col; col = row.cells[j]; j++) {
+   		var cell_time = times[j - 1];
+   		
+   		for (var d = 0; d < length; d++) {
+   			if (array[d][0] == days[i - 1]) {
+   				if (cell_time >= array[d][1] && cell_time <= array[d][2]) {
+   					if (col.getAttribute("class") === "table-success") {
+   						col.setAttribute("class", "table-failure");
+   						col.innerHTML = "Clash";
+   					} else {
+   						col.setAttribute("class", "table-success");
+   					};
+   				};
+   			};		
+   		};
+   };  
+};
+
+</script>

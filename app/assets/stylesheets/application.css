@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+#table tr td.table-success {
+	background-color: green;
+}
+
+#table tr td.table-failure {
+	background-color: red;
+	color: white;
+	font-weight: bold;
+}
+
+table tr td, table tr th {
+	padding: 5px;
+}

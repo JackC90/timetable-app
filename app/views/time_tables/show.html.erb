@@ -1,4 +1,16 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+	<h1><%= @time_table.name %></h1>
 
-<%= link_to 'Edit', edit_time_table_path(@time_table) %> |
-<%= link_to 'Back', time_tables_path %>
+	<div id="table-div">
+		<%= render partial:"time_tables/table" %>
+	</div>
+
+	<div class="container col-md-6" id="selected-subjects">
+		<h1>Selected Subjects</h1>
+		<%= render "subjects/index", subjects: @selected_subjects, selected: true %>
+	</div>
+
+
+	<%= link_to 'Edit', edit_time_table_path(@time_table) %> |
+	<%= link_to 'Back', time_tables_path %>
+</div>

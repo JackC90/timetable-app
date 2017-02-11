@@ -8,6 +8,12 @@
   <%= @subject.credits %>
 </p>
 
+<p>
+  <strong>Compulsory:</strong>
+  <%= @subject.compulsory %>
+</p>
+
+
 <%= render partial:"slots/index" %>
 
 <%= link_to 'Edit', edit_subject_path(@subject) %> |

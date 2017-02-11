@@ -7,12 +7,12 @@
 
 	<div class="container col-md-6">
 		<h1>Selected Subjects</h1>
-		<%= render "subjects/index", subjects: @selected_subjects %>
+		<%= render "subjects/index", subjects: @selected_subjects, selected: true %>
 	</div>
 
 	<div class="container col-md-6">
-		<h1>Available Subjects</h1>
-		<%= render "subjects/index", subjects: @subjects %>
+		<h1>Subjects List</h1>
+		<%= render "subjects/index", subjects: @subjects, selected: false %>
 	</div>
 
 	<%= link_to 'Show', @time_table %> |

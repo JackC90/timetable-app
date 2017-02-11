@@ -16,7 +16,7 @@
     <%= f.text_field :name %>
   </div>
 
-  <% if time_table.total_credits >= 15 %>
+  <% if !time_table.total_credits.nil? && time_table.total_credits >= 15 %>
   <%= f.hidden_field :complete, value: true %>
   <% end %>
 

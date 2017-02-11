@@ -1,5 +1,5 @@
 class TimetableSubjectsController < ApplicationController
-  # before_action :set_timetable_subject, only: [:show, :edit, :update, :destroy]
+  before_action :set_timetable_subject, only: [:show, :edit, :update, :destroy]
 
   # GET /timetable_subjects
   # GET /timetable_subjects.json
@@ -29,44 +29,32 @@ class TimetableSubjectsController < ApplicationController
 
     respond_to do |format|
       if @timetable_subject.save
-        format.html { redirect_to edit_time_table_path(@time_table), notice: 'Subject was successfully added to timetable.' }
+        format.html { redirect_to :back, notice: 'Subject was successfully added to timetable.' }
         format.json { render :show, status: :created, location: @timetable_subject }
+        format.js
       else
-        format.html { redirect_to edit_time_table_path(@time_table), error: "Slot has been taken!" }
+        format.html { redirect_to :back, notice: "Slot has been taken!" }
         format.json { render json: @timetable_subject.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
-
-  # PATCH/PUT /timetable_subjects/1
-  # PATCH/PUT /timetable_subjects/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @timetable_subject.update(timetable_subject_params)
-  #       format.html { redirect_to @timetable_subject, notice: 'Timetable subject was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @timetable_subject }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @timetable_subject.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
 
   # DELETE /timetable_subjects/1
   # DELETE /timetable_subjects/1.json
   def destroy
     @timetable_subject.destroy
     respond_to do |format|
-      format.html { redirect_to timetable_subjects_url, notice: 'Timetable subject was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Timetable subject was successfully removed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    # def set_timetable_subject
-    #   @timetable_subject = TimetableSubject.find(params[:id])
-    # end
+    def set_timetable_subject
+      @timetable_subject = TimetableSubject.find(params[:id])
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def timetable_subject_params

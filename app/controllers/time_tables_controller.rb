@@ -1,5 +1,6 @@
 class TimeTablesController < ApplicationController
   before_action :set_time_table, only: [:show, :edit, :update, :destroy]
+  before_action :set_subjects, only: [:show, :edit]
 
   # GET /time_tables
   # GET /time_tables.json
@@ -19,10 +20,6 @@ class TimeTablesController < ApplicationController
 
   # GET /time_tables/1/edit
   def edit
-    # Index of selected subjects
-    @selected_subjects = Subject.selected(@time_table.id)
-    # Index of available subjects
-    @subjects = Subject.all
   end
 
   # POST /time_tables
@@ -69,6 +66,14 @@ class TimeTablesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_time_table
       @time_table = TimeTable.find(params[:id])
+    end
+
+    def set_subjects
+      # Index of selected subjects
+      @selected_subjects = Subject.selected(@time_table.id)
+      selected_ids = @selected_subjects.pluck(:id)
+      # Index of available subjects
+      @subjects = Subject.where.not(id: selected_ids)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
